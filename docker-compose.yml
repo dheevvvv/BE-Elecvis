@@ -1,0 +1,12 @@
+version: '3.7'
+
+services:
+  restful-api-postgres:
+    container_name: "restful-api-postgres"
+    image: postgres:latest
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: tugasakhir
+      POSTGRES_USER: dheva
+      POSTGRES_DB: restful-api
