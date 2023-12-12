@@ -35,6 +35,6 @@ data class Users(
     @Column(name = "created_at", nullable = false, updatable = false)
     var createdAt: LocalDateTime? = null,
 
-    @Column(name = "updated_at", nullable = false)
+    @Column(name = "updated_at")
     var updatedAt: LocalDateTime? = null
 )
