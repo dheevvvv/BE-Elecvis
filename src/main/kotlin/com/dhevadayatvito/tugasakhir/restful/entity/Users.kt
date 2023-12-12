@@ -29,7 +29,7 @@ data class Users(
     @Column(name = "password")
     val password: String,
 
-    @Column(name = "phone_number")
+    @Column(name = "phonenumber")
     val phoneNumber: String,
 
     @Column(name = "created_at", nullable = false, updatable = false)

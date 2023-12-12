@@ -4,6 +4,7 @@ import com.dhevadayatvito.tugasakhir.restful.model.CreateUsersRequest
 import com.dhevadayatvito.tugasakhir.restful.model.GenericResponse
 import com.dhevadayatvito.tugasakhir.restful.model.UsersResponse
 import com.dhevadayatvito.tugasakhir.restful.service.UsersService
+import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
