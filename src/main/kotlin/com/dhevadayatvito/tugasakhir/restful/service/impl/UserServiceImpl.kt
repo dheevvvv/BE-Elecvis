@@ -5,13 +5,15 @@ import com.dhevadayatvito.tugasakhir.restful.model.CreateUsersRequest
 import com.dhevadayatvito.tugasakhir.restful.model.UsersResponse
 import com.dhevadayatvito.tugasakhir.restful.repository.UsersRepository
 import com.dhevadayatvito.tugasakhir.restful.service.UsersService
+import com.dhevadayatvito.tugasakhir.restful.validation.ValidationUtil
 import org.springframework.stereotype.Service
 import java.sql.Timestamp
 import java.time.LocalDateTime
 
 @Service
-class UserServiceImpl(val usersRepository: UsersRepository): UsersService {
+class UserServiceImpl(val usersRepository: UsersRepository, val validationUtil: ValidationUtil): UsersService {
     override fun createUsers(createUsersRequest: CreateUsersRequest): UsersResponse {
+        validationUtil.validate(createUsersRequest)
         val currentTime = LocalDateTime.now()
         val users = Users(
             id = createUsersRequest.id,
