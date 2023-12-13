@@ -21,16 +21,16 @@ data class Users(
     @Column(name = "name")
     var name:String,
 
-    @Column(name = "username")
+    @Column(name = "username", unique = true)
     var username: String,
 
-    @Column(name = "email")
+    @Column(name = "email", unique = true)
     var email: String,
 
     @Column(name = "password")
     var password: String,
 
-    @Column(name = "phone_number")
+    @Column(name = "phone_number", unique = true)
     var phoneNumber: String,
 
     @Column(name = "created_at")
