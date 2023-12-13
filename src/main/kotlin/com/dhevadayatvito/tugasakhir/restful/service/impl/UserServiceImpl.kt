@@ -9,12 +9,13 @@ import com.dhevadayatvito.tugasakhir.restful.validation.ValidationUtil
 import org.springframework.stereotype.Service
 import java.sql.Timestamp
 import java.time.LocalDateTime
+import java.util.*
 
 @Service
 class UserServiceImpl(val usersRepository: UsersRepository, val validationUtil: ValidationUtil): UsersService {
     override fun createUsers(createUsersRequest: CreateUsersRequest): UsersResponse {
         validationUtil.validate(createUsersRequest)
-        val currentTime = LocalDateTime.now()
+
         val users = Users(
             id = createUsersRequest.id,
             name = createUsersRequest.name,
@@ -22,8 +23,9 @@ class UserServiceImpl(val usersRepository: UsersRepository, val validationUtil: 
             username = createUsersRequest.username,
             password = createUsersRequest.password,
             phoneNumber = createUsersRequest.password,
-            createdAt = currentTime,
+            createdAt = Date(),
             updatedAt = null
+
         )
         usersRepository.save(users)
 
@@ -32,8 +34,10 @@ class UserServiceImpl(val usersRepository: UsersRepository, val validationUtil: 
             name = users.name,
             email = users.email,
             username = users.username,
-            createdAt = users.createdAt,
-            updatedAt = users.updatedAt
+            phoneNumber = users.phoneNumber,
+            createdAt = Date(),
+            updatedAt = Date()
+
         )
     }
 }

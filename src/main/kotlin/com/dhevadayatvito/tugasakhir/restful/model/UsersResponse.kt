@@ -2,13 +2,16 @@ package com.dhevadayatvito.tugasakhir.restful.model
 
 import jakarta.persistence.Column
 import java.time.LocalDateTime
+import java.util.Date
 
 data class UsersResponse(
-    val id: Long? = null,
+    val id: String,
     val name:String,
     val username: String,
     val email: String,
-    var createdAt: LocalDateTime? = null,
-    var updatedAt: LocalDateTime? = null
+    val phoneNumber:String,
+    val createdAt:Date,
+    val updatedAt:Date
+
 ) {
 }

@@ -5,7 +5,9 @@ import org.jetbrains.annotations.NotNull
 
 
 data class CreateUsersRequest(
-    val id: Long? = null,
+
+    @field:NotBlank
+    val id:String,
 
     @field:NotBlank
     val name:String,

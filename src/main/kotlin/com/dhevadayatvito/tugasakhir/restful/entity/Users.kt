@@ -8,14 +8,14 @@ import jakarta.persistence.Id
 import jakarta.persistence.Table
 import org.hibernate.annotations.Columns
 import java.time.LocalDateTime
+import java.util.Date
 
 
 @Entity
 @Table(name = "users")
 data class Users(
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = null,
+    val id: String,
 
     @Column(name = "name")
     val name:String,
@@ -29,12 +29,13 @@ data class Users(
     @Column(name = "password")
     val password: String,
 
-    @Column(name = "phonenumber")
+    @Column(name = "phone_number")
     val phoneNumber: String,
 
-    @Column(name = "created_at", nullable = false, updatable = false)
-    var createdAt: LocalDateTime? = null,
+    @Column(name = "created_at")
+    val createdAt:Date,
 
     @Column(name = "updated_at")
-    var updatedAt: LocalDateTime? = null
+    val updatedAt:Date?
+
 )
