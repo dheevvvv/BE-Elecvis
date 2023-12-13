@@ -1,11 +1,8 @@
 package com.dhevadayatvito.tugasakhir.restful.model
 
 import jakarta.validation.constraints.NotBlank
-import org.jetbrains.annotations.NotNull
 
-
-data class CreateUsersRequest(
-
+data class UpdateUsersRequest(
     @field:NotBlank
     var name:String,
 
@@ -20,6 +17,5 @@ data class CreateUsersRequest(
 
     @field:NotBlank
     var phoneNumber: String
-
-    ) {
+) {
 }

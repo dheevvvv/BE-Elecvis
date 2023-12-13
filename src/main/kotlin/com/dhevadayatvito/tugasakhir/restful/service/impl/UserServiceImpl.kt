@@ -2,11 +2,15 @@ package com.dhevadayatvito.tugasakhir.restful.service.impl
 
 import com.dhevadayatvito.tugasakhir.restful.entity.Users
 import com.dhevadayatvito.tugasakhir.restful.model.CreateUsersRequest
+import com.dhevadayatvito.tugasakhir.restful.model.UpdateUsersRequest
 import com.dhevadayatvito.tugasakhir.restful.model.UsersResponse
 import com.dhevadayatvito.tugasakhir.restful.repository.UsersRepository
 import com.dhevadayatvito.tugasakhir.restful.service.UsersService
 import com.dhevadayatvito.tugasakhir.restful.validation.ValidationUtil
+import org.springframework.data.repository.findByIdOrNull
+import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service
+import org.springframework.web.server.ResponseStatusException
 import java.sql.Timestamp
 import java.time.LocalDateTime
 import java.util.*
@@ -28,6 +32,37 @@ class UserServiceImpl(val usersRepository: UsersRepository, val validationUtil: 
         )
         usersRepository.save(users)
 
+        return usersResponse(users)
+    }
+
+    override fun getUsers(id: Long): UsersResponse {
+        val users = usersRepository.findByIdOrNull(id.toString())
+        if (users==null){
+            throw ResponseStatusException(HttpStatus.NOT_FOUND, "User not found")
+        } else{
+            return usersResponse(users)
+        }
+    }
+
+    override fun updateUsers(id: Long, updateUsersRequest: UpdateUsersRequest): UsersResponse {
+        val users = usersRepository.findByIdOrNull(id.toString())
+        if (users==null){
+            throw ResponseStatusException(HttpStatus.NOT_FOUND, "User not found")
+        } else{
+            users.apply {
+                name = updateUsersRequest.name
+                username = updateUsersRequest.username
+                email = updateUsersRequest.email
+                password = updateUsersRequest.password
+                phoneNumber = updateUsersRequest.phoneNumber
+                updatedAt = Date()
+            }
+            usersRepository.save(users)
+            return usersResponse(users)
+        }
+    }
+
+    private fun usersResponse(users: Users):UsersResponse{
         return UsersResponse(
             id = users.id,
             name = users.name,

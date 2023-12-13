@@ -19,24 +19,24 @@ data class Users(
     val id: Long? = null,
 
     @Column(name = "name")
-    val name:String,
+    var name:String,
 
     @Column(name = "username")
-    val username: String,
+    var username: String,
 
     @Column(name = "email")
-    val email: String,
+    var email: String,
 
     @Column(name = "password")
-    val password: String,
+    var password: String,
 
     @Column(name = "phone_number")
-    val phoneNumber: String,
+    var phoneNumber: String,
 
     @Column(name = "created_at")
-    val createdAt:Date,
+    var createdAt:Date,
 
     @Column(name = "updated_at")
-    val updatedAt:Date?
+    var updatedAt:Date?
 
 )
