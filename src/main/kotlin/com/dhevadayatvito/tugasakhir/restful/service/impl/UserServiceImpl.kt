@@ -2,18 +2,19 @@ package com.dhevadayatvito.tugasakhir.restful.service.impl
 
 import com.dhevadayatvito.tugasakhir.restful.entity.Users
 import com.dhevadayatvito.tugasakhir.restful.model.CreateUsersRequest
+import com.dhevadayatvito.tugasakhir.restful.model.ListUsersRequest
 import com.dhevadayatvito.tugasakhir.restful.model.UpdateUsersRequest
 import com.dhevadayatvito.tugasakhir.restful.model.UsersResponse
 import com.dhevadayatvito.tugasakhir.restful.repository.UsersRepository
 import com.dhevadayatvito.tugasakhir.restful.service.UsersService
 import com.dhevadayatvito.tugasakhir.restful.validation.ValidationUtil
+import org.springframework.data.domain.PageRequest
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service
 import org.springframework.web.server.ResponseStatusException
-import java.sql.Timestamp
-import java.time.LocalDateTime
 import java.util.*
+import java.util.stream.Collectors
 
 @Service
 class UserServiceImpl(val usersRepository: UsersRepository, val validationUtil: ValidationUtil): UsersService {
@@ -60,6 +61,12 @@ class UserServiceImpl(val usersRepository: UsersRepository, val validationUtil: 
             usersRepository.save(users)
             return usersResponse(users)
         }
+    }
+
+    override fun getListUsers(listUsersRequest: ListUsersRequest): List<UsersResponse> {
+        val page = usersRepository.findAll(PageRequest.of(listUsersRequest.page, listUsersRequest.size))
+        val users: List<Users> = page.get().collect(Collectors.toList())
+        return users.map { usersResponse(it) }
     }
 
     private fun usersResponse(users: Users):UsersResponse{
