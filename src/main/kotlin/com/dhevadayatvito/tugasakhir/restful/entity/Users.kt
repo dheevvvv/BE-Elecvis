@@ -15,7 +15,8 @@ import java.util.Date
 @Table(name = "users")
 data class Users(
     @Id
-    val id: String,
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Long? = null,
 
     @Column(name = "name")
     val name:String,

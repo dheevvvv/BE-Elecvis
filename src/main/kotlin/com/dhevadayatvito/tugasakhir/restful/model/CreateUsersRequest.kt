@@ -7,9 +7,6 @@ import org.jetbrains.annotations.NotNull
 data class CreateUsersRequest(
 
     @field:NotBlank
-    val id:String,
-
-    @field:NotBlank
     val name:String,
 
     @field:NotBlank

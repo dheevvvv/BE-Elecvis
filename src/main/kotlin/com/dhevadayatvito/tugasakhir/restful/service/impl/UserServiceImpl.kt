@@ -17,7 +17,6 @@ class UserServiceImpl(val usersRepository: UsersRepository, val validationUtil: 
         validationUtil.validate(createUsersRequest)
 
         val users = Users(
-            id = createUsersRequest.id,
             name = createUsersRequest.name,
             email = createUsersRequest.email,
             username = createUsersRequest.username,
