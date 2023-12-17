@@ -1,37 +1,40 @@
 package com.dhevadayatvito.tugasakhir.restful.entity
 
-import jakarta.persistence.Column
-import jakarta.persistence.Entity
-import jakarta.persistence.Table
+import jakarta.persistence.*
+import java.math.BigDecimal
 import java.util.*
 
 @Entity
 @Table(name = "power_usage")
 data class PowerUsage(
-    @Column(name = "Date")
-    var Date:String,
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Long? = null,
 
-    @Column(name = "Time")
-    val time: String,
+    @Column(name = "date")
+    var date:String,
 
-    @Column(name = "Global_active_power")
-    val globalActivePower: Double,
+    @Column(name = "time")
+    var time: String,
 
-    @Column(name = "Global_reactive_power")
-    val globalReactivePower: Double,
+    @Column(name = "global_active_power")
+    var globalActivePower: BigDecimal,
 
-    @Column(name = "Voltage")
-    val voltage: Double,
+    @Column(name = "global_reactive_power")
+    var globalReactivePower: BigDecimal,
 
-    @Column(name = "Global_intensity")
-    val globalIntensity: Double,
+    @Column(name = "voltage")
+    var voltage: BigDecimal,
 
-    @Column(name = "Sub_metering_1")
-    val subMetering1: Double,
+    @Column(name = "global_intensity")
+    var globalIntensity: BigDecimal,
 
-    @Column(name = "Sub_metering_2")
-    val subMetering2: Double,
+    @Column(name = "sub_metering_1")
+    var subMetering1: BigDecimal,
 
-    @Column(name = "Sub_metering_3")
-    val subMetering3: Double
+    @Column(name = "sub_metering_2")
+    var subMetering2: BigDecimal,
+
+    @Column(name = "sub_metering_3")
+    var subMetering3: BigDecimal
 )

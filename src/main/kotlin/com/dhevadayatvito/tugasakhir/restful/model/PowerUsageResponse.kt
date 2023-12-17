@@ -1,24 +1,26 @@
 package com.dhevadayatvito.tugasakhir.restful.model
 
 import jakarta.persistence.Column
+import java.math.BigDecimal
 
 data class PowerUsageResponse(
+    val id:Long?,
 
-    var Date:String,
+    var date:String,
 
-    val time: String,
+    var time: String,
 
-    val globalActivePower: Double,
+    var globalActivePower: BigDecimal,
 
-    val globalReactivePower: Double,
+    var globalReactivePower: BigDecimal,
 
-    val voltage: Double,
+    var voltage: BigDecimal,
 
-    val globalIntensity: Double,
+    var globalIntensity: BigDecimal,
 
-    val subMetering1: Double,
+    var subMetering1: BigDecimal,
 
-    val subMetering2: Double,
+    var subMetering2: BigDecimal,
 
-    val subMetering3: Double
+    var subMetering3: BigDecimal
 )
