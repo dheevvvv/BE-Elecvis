@@ -1,20 +1,23 @@
 # API SPEC
 
-## GET ALL Data Household Power Cunsumption
+Required Api Key Authentication
+
+## GET ALL Data Household Power Cunsumption By Range Date
 
 Request :
 - Method : GET
-- Endpoint : `/api/household`
+- Endpoint : `/api/power-usage-by-range-date`
+- Params : - startDate , - endDate
 
 Response :
 ```json
 {
-  "code" : "number",
-  "status" : "string",
+  "code" : "200",
+  "status" : "OK",
   "data" : [
     {
       "id" : "id_household, unique",
-      "Date" : "16/12/2006",
+      "Date" : "2006-12-16",
       "time" : "17:24:00",
       "global_active_power" : 4.216,
       "global_reactive_power" : 0.418,
@@ -37,46 +40,5 @@ Response :
       "sub_metering_3" : 17.000
     }
   ]
-}
-```
-
-
-## Create Data Household Power Consumption
-Request :
-- Method : POST
-- Endpoint : `/api/household`
-- Body : 
-```json
-{
-  "id" : "string, unique",
-  "Date" : "string",
-  "time" : "string",
-  "global_active_power" : "double",
-  "global_reactive_power" : "double",
-  "voltage" : "double",
-  "global_intensity" : "double",
-  "sub_metering_1" : "double",
-  "sub_metering_2" : "double",
-  "sub_metering_3" : "double"
-}
-```
-
-Response :
-```json
-{
-  "code" : "number",
-  "status" : "string",
-  "data" : {
-    "id" : "string, unique",
-    "Date" : "string",
-    "time" : "string",
-    "global_active_power" : "double",
-    "global_reactive_power" : "double",
-    "voltage" : "double",
-    "global_intensity" : "double",
-    "sub_metering_1" : "double",
-    "sub_metering_2" : "double",
-    "sub_metering_3" : "double"
-  }
 }
 ```
