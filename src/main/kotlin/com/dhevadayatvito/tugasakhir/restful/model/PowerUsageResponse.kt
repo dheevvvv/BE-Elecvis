@@ -11,7 +11,7 @@ data class PowerUsageResponse(
     val globalActivePower: Double,
 
     val globalReactivePower: Double,
-    
+
     val voltage: Double,
 
     val globalIntensity: Double,
