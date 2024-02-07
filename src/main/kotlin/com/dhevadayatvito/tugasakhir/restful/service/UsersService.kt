@@ -9,9 +9,9 @@ interface UsersService {
 
     fun createUsers(createUsersRequest: CreateUsersRequest): UsersResponse
 
-    fun getUsers(id:Long): UsersResponse
+    fun getUsers(user_id:Long): UsersResponse
 
-    fun updateUsers(id: Long, updateUsersRequest: UpdateUsersRequest): UsersResponse
+    fun updateUsers(user_id: Long, updateUsersRequest: UpdateUsersRequest): UsersResponse
 
     fun getListUsers(listUsersRequest: ListUsersRequest):List<UsersResponse>
 }

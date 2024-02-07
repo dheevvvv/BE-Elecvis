@@ -16,7 +16,7 @@ import java.util.Date
 data class Users(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = null,
+    val user_id: Long? = null,
 
     @Column(name = "name")
     var name:String,

@@ -36,7 +36,8 @@ class PowerUsageImpl(val powerUsageRepository: PowerUsageRepository): PowerUsage
             globalIntensity = powerUsage.globalIntensity,
             subMetering1 = powerUsage.subMetering1,
             subMetering2 = powerUsage.subMetering2,
-            subMetering3 = powerUsage.subMetering3
+            subMetering3 = powerUsage.subMetering3,
+            user_id = powerUsage.user_id
         )
     }
 }

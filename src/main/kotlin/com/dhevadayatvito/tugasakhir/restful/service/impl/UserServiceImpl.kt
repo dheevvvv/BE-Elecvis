@@ -26,7 +26,7 @@ class UserServiceImpl(val usersRepository: UsersRepository, val validationUtil: 
             email = createUsersRequest.email,
             username = createUsersRequest.username,
             password = createUsersRequest.password,
-            phoneNumber = createUsersRequest.password,
+            phoneNumber = createUsersRequest.phoneNumber,
             createdAt = Date(),
             updatedAt = null
 
@@ -71,7 +71,7 @@ class UserServiceImpl(val usersRepository: UsersRepository, val validationUtil: 
 
     private fun usersResponse(users: Users):UsersResponse{
         return UsersResponse(
-            id = users.id,
+            user_id = users.user_id,
             name = users.name,
             email = users.email,
             username = users.username,

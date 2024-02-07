@@ -22,5 +22,7 @@ data class PowerUsageResponse(
 
     var subMetering2: BigDecimal,
 
-    var subMetering3: BigDecimal
+    var subMetering3: BigDecimal,
+
+    var user_id: Int
 )
