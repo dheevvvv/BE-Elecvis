@@ -7,6 +7,6 @@ import org.springframework.data.repository.query.Param
 
 interface PowerUsageRepository:JpaRepository<PowerUsage, String> {
 
-    @Query("SELECT p FROM PowerUsage p WHERE p.date BETWEEN :startDate AND :endDate")
-    fun findAllByDateBetween(@Param("startDate") startDate: String, @Param("endDate") endDate: String): List<PowerUsage>
+    @Query("SELECT p FROM PowerUsage p WHERE p.userId = :userId AND p.date BETWEEN :startDate AND :endDate")
+    fun findAllByUserIdAndDateBetween(@Param("userId") userId:Int, @Param("startDate") startDate: String, @Param("endDate") endDate: String): List<PowerUsage>
 }

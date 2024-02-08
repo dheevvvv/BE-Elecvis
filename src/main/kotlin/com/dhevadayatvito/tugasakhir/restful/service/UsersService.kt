@@ -1,9 +1,8 @@
 package com.dhevadayatvito.tugasakhir.restful.service
 
-import com.dhevadayatvito.tugasakhir.restful.model.CreateUsersRequest
-import com.dhevadayatvito.tugasakhir.restful.model.ListUsersRequest
-import com.dhevadayatvito.tugasakhir.restful.model.UpdateUsersRequest
-import com.dhevadayatvito.tugasakhir.restful.model.UsersResponse
+import com.dhevadayatvito.tugasakhir.restful.entity.Users
+import com.dhevadayatvito.tugasakhir.restful.model.*
+import org.springframework.http.ResponseEntity
 
 interface UsersService {
 
@@ -14,4 +13,8 @@ interface UsersService {
     fun updateUsers(user_id: Long, updateUsersRequest: UpdateUsersRequest): UsersResponse
 
     fun getListUsers(listUsersRequest: ListUsersRequest):List<UsersResponse>
+
+    fun userLogin(userLoginRequest: UserLoginRequest): ResponseEntity<String>
+
+    fun getUserByEmail(email: String): Users?
 }

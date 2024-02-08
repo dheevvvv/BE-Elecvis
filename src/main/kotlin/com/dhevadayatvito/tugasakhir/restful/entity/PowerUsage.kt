@@ -39,5 +39,5 @@ data class PowerUsage(
     var subMetering3: BigDecimal,
 
     @Column(name = "user_id")
-    var user_id: Int
+    var userId: Int
 )

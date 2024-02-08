@@ -19,10 +19,11 @@ class PowerUsageController(val powerUsageService: PowerUsageService) {
         produces = ["application/json"]
     )
     fun getPowerUsageByDateRange(
+        @RequestParam(value = "userId", defaultValue = "userId") userId:Int,
         @RequestParam(value = "startDate", defaultValue = "startDate") startDate: String,
         @RequestParam(value = "endDate", defaultValue = "startDate") endDate: String
     ): GenericResponse<List<PowerUsageResponse>> {
-        val request = PowerUsageRequest(startDate, startDate, endDate)
+        val request = PowerUsageRequest(startDate, startDate, endDate, userId)
         val data = powerUsageService.getPowerUsageByRangeDate(request)
         return GenericResponse(
             code = 200,

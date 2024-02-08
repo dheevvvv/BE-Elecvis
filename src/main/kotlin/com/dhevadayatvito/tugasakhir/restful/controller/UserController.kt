@@ -3,6 +3,8 @@ package com.dhevadayatvito.tugasakhir.restful.controller
 import com.dhevadayatvito.tugasakhir.restful.model.*
 import com.dhevadayatvito.tugasakhir.restful.service.UsersService
 import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
@@ -16,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController
 class UserController(val usersService: UsersService) {
 
     @PostMapping(
-        value = ["/api/users"],
+        value = ["/api/users/register"],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
@@ -27,6 +29,24 @@ class UserController(val usersService: UsersService) {
             status = "OK",
             data = usersResponse
         )
+    }
+
+    @PostMapping(
+        value = ["/api/users/login"],
+        produces = ["application/json"],
+        consumes = ["application/json"]
+    )
+    fun userLogin(@RequestBody userLoginRequest: UserLoginRequest) : ResponseEntity<out Any> {
+        // Panggil metode loginUsers dari UserService
+        val loginResponse = usersService.userLogin(userLoginRequest)
+        if (loginResponse.statusCode == HttpStatus.OK) {
+            // Jika login berhasil, kembalikan data pengguna dalam respons
+            val user = usersService.getUserByEmail(userLoginRequest.email)
+            return ResponseEntity(user, HttpStatus.OK)
+        } else {
+            // Jika login gagal, kembalikan respons login yang berisi pesan error
+            return loginResponse
+        }
     }
 
     @GetMapping(

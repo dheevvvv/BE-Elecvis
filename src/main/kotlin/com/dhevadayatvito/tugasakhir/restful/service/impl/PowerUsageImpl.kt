@@ -14,11 +14,14 @@ import java.util.*
 class PowerUsageImpl(val powerUsageRepository: PowerUsageRepository): PowerUsageService {
 
     override fun getPowerUsageByRangeDate(powerUsageRequest: PowerUsageRequest): List<PowerUsageResponse> {
+
+        val userId:Int = powerUsageRequest.userId
+
         val startDate:String = powerUsageRequest.startDate
         val endDate:String = powerUsageRequest.endDate
 
-        // Mengambil data dari repository berdasarkan rentang tanggal
-        val powerUsages: List<PowerUsage> = powerUsageRepository.findAllByDateBetween(startDate, endDate)
+        // Mengambil data dari repository berdasarkan user id dan rentang tanggal
+        val powerUsages: List<PowerUsage> = powerUsageRepository.findAllByUserIdAndDateBetween(userId,startDate, endDate)
 
         // Mengonversi entitas PowerUsage menjadi DTO atau Response yang sesuai
         return powerUsages.map { powerUsageResponse(it) }
@@ -37,7 +40,7 @@ class PowerUsageImpl(val powerUsageRepository: PowerUsageRepository): PowerUsage
             subMetering1 = powerUsage.subMetering1,
             subMetering2 = powerUsage.subMetering2,
             subMetering3 = powerUsage.subMetering3,
-            user_id = powerUsage.user_id
+            user_id = powerUsage.userId
         )
     }
 }

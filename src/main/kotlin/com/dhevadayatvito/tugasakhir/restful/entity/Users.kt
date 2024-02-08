@@ -16,7 +16,7 @@ import java.util.Date
 data class Users(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val user_id: Long? = null,
+    val userId: Long? = null,
 
     @Column(name = "name")
     var name:String,
@@ -37,6 +37,9 @@ data class Users(
     var createdAt:Date,
 
     @Column(name = "updated_at")
-    var updatedAt:Date?
+    var updatedAt:Date?,
+
+    @Column(name = "role")
+    var role:String? = "user"
 
 )

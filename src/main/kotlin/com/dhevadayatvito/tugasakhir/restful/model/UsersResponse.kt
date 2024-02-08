@@ -11,7 +11,8 @@ data class UsersResponse(
     val email: String,
     val phoneNumber:String,
     val createdAt:Date,
-    val updatedAt:Date
+    val updatedAt:Date,
+    val role:String? = "user"
 
 ) {
 }
