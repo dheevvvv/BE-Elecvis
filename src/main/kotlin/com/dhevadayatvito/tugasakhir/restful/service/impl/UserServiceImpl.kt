@@ -34,8 +34,8 @@ class UserServiceImpl(val usersRepository: UsersRepository, val validationUtil: 
         return usersResponse(users)
     }
 
-    override fun getUsers(id: Long): UsersResponse {
-        val users = usersRepository.findByIdOrNull(id.toString())
+    override fun getUsers(user_id: Long): UsersResponse {
+        val users = usersRepository.findByIdOrNull(user_id.toString())
         if (users==null){
             throw ResponseStatusException(HttpStatus.NOT_FOUND, "User not found")
         } else{
@@ -43,8 +43,8 @@ class UserServiceImpl(val usersRepository: UsersRepository, val validationUtil: 
         }
     }
 
-    override fun updateUsers(id: Long, updateUsersRequest: UpdateUsersRequest): UsersResponse {
-        val users = usersRepository.findByIdOrNull(id.toString())
+    override fun updateUsers(user_id: Long, updateUsersRequest: UpdateUsersRequest): UsersResponse {
+        val users = usersRepository.findByIdOrNull(user_id.toString())
         if (users==null){
             throw ResponseStatusException(HttpStatus.NOT_FOUND, "User not found")
         } else{
@@ -85,7 +85,7 @@ class UserServiceImpl(val usersRepository: UsersRepository, val validationUtil: 
     private fun processLogin(userLoginRequest: UserLoginRequest): ResponseEntity<String> {
         // Memeriksa kecocokan email dan password
         val user = usersRepository.findByEmail(userLoginRequest.email)
-        if (user != null && user.password == userLoginRequest.password) {
+        if (user.password == userLoginRequest.password) {
             // Email dan password cocok, login berhasil
             return ResponseEntity("Login berhasil", HttpStatus.OK)
         } else {
