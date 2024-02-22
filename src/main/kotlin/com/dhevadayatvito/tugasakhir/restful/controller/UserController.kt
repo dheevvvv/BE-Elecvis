@@ -45,7 +45,7 @@ class UserController(val usersService: UsersService) {
             return ResponseEntity(user, HttpStatus.OK)
         } else {
             // Jika login gagal, kembalikan respons login yang berisi pesan error
-            return ResponseEntity(loginResponse, HttpStatus.INTERNAL_SERVER_ERROR)
+            return ResponseEntity(loginResponse, HttpStatus.UNAUTHORIZED)
         }
     }
 
