@@ -22,13 +22,9 @@ class UserController(val usersService: UsersService) {
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun createUsers(@RequestBody createUsersRequest: CreateUsersRequest): GenericResponse<UsersResponse> {
+    fun createUsers(@RequestBody createUsersRequest: CreateUsersRequest): UsersResponse {
         val usersResponse = usersService.createUsers(createUsersRequest)
-        return GenericResponse(
-            code = 200,
-            status = "OK",
-            data = usersResponse
-        )
+        return usersResponse
     }
 
     @PostMapping(
@@ -45,7 +41,8 @@ class UserController(val usersService: UsersService) {
             return ResponseEntity(user, HttpStatus.OK)
         } else {
             // Jika login gagal, kembalikan respons login yang berisi pesan error
-            return ResponseEntity(loginResponse, HttpStatus.UNAUTHORIZED)
+            val errorMessage = "Login failed: Incorrect email or password."
+            return ResponseEntity(errorMessage, HttpStatus.UNAUTHORIZED)
         }
     }
 

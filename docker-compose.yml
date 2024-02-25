@@ -3,7 +3,7 @@ version: '3.7'
 services:
   backend-restful-api:
     container_name: backend-restful-api
-    image: backend-restful-api:0.0.3
+    image: backend-restful-api:0.0.5
     ports:
       - 8080:8080
     environment:
